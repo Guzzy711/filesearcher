@@ -1,5 +1,7 @@
 import os
 import os.path
+print("Enter a path to search (leave empty to search current): ")
+search_path = input()
 file_extensions = ['.doc','.pdf','docx','.dot','.dotm','.xls','.xlsx','.ppt','.pptx','.gif','.exe','.png','.psd','.txt','.html']
 list_files = []
 list_folders = []
@@ -29,7 +31,11 @@ def change_dir():
                     search_file()
     except:
         print("There was an error with " + SystemError)
-search_file()
+def check_search_path():
+    if search_path:
+        os.chdir(search_path)
+    search_file()    
+check_search_path()
 change_dir()
 print("Files found: ")
 print(*list_files,sep='\n')
