@@ -1,11 +1,11 @@
 import os
 import os.path
-print("Enter a path to search (leave empty to search current): ")
-search_path = input()
+search_path = input("Enter a path to search (leave empty to search current): ")
 file_extensions = ['.doc','.pdf','docx','.dot','.dotm','.xls','.xlsx','.ppt','.pptx','.gif','.exe','.png','.psd','.txt','.html']
 list_files = []
 list_folders = []
 searched_folders = []
+path = os.path.expanduser("~/Desktop")
 def search_file():
     try:
         working_dir = os.path.abspath(os.getcwd())
@@ -40,5 +40,13 @@ check_search_path()
 change_dir()
 print("Files found: ")
 print(*list_files,sep='\n')
-# Add parameter to specify which folder to search
+save = input("Do you want to store these results in file? (Y/n): ")
+print(path)
+if save == "Y" or save == "y" or save == "yes":
+    os.chdir(path)
+    print("Results saved in: " + path + "/results.txt")
+    with open('results.txt','w') as filehandle:
+        for item in list_files:
+            filehandle.write('%s\n' % item)
+# Save all stores files in log file if the user wants to
 
