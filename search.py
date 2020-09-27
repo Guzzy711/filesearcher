@@ -15,7 +15,6 @@ def search_file():
                     list_files.append(working_dir + '/' + file) #append to list of files
             if os.path.isdir(file):
                     list_folders.append(working_dir + '/' + file) #append found folders to a list
-        #print("Folders: " + str(list_folders))
     except IOError:
         print("There was an error with " + SystemError)
 
@@ -27,15 +26,12 @@ def change_dir():
             else:
                 for i in range(len(list_folders)):
                     os.chdir(list_folders[i]) #change current working directory
-                    #print("Searching folder: " + os.getcwd())
                     search_file()
     except:
         print("There was an error with " + SystemError)
 search_file()
 change_dir()
-print("Files found: " + str(list_files))
-
-
+print("Files found: ")
+print(*list_files,sep='\n')
 # Add parameter to specify which folder to search
-# make the output of the matched files beautiful
 
