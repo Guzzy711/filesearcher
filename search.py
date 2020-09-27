@@ -32,8 +32,9 @@ def change_dir():
     except:
         print("There was an error with " + SystemError)
 def check_search_path():
-    if search_path:
+    if search_path and os.path.isdir(search_path):
         os.chdir(search_path)
+    print("Searching: " + os.getcwd())
     search_file()    
 check_search_path()
 change_dir()
